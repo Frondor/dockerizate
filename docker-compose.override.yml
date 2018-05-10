@@ -1,0 +1,10 @@
+version: '3'
+services:
+  api:
+    volumes:
+      - ./api:/home/node/app
+      - /home/node/app/node_modules
+    command: adonis serve --dev -p
+  nginx:
+    volumes:
+      - ./app/dist:/usr/share/nginx/html

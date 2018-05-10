@@ -1,0 +1,20 @@
+server {
+    # https://github.com/docker-library/docs/issues/496 env variables
+    listen ${NGINX_PORT};
+    root /usr/share/nginx/html;
+    index index.html;
+    server_name default_server;
+
+    # location = / {
+
+    # }
+
+    location /app {
+        root /var/www/app;
+        # index index.html;
+    }
+
+    location /api/ {
+        proxy_pass          http://api:3333/;
+    }
+}
